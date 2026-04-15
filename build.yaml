@@ -18,10 +18,10 @@
 #
 ---
 include:
-  - board: adafruit_feather_nrf52840
+  - board: adafruit_feather_nrf52840/nrf52840/uf2/zmk
     snippet: nrf52840-nosd
     shield: fulcrum34_left
-  - board: adafruit_feather_nrf52840
+  - board: adafruit_feather_nrf52840/nrf52840/uf2/zmk
     snippet: nrf52840-nosd
     shield: fulcrum34_right
 #  - board: adafruit_feather_nrf52840
