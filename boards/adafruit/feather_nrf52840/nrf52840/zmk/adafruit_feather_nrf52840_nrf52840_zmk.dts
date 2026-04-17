@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2024 Jacob Winther
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include "adafruit_feather_nrf52840_common.dtsi"
+#include <nordic/nrf52840_qiaa.dtsi>
+#include <common/nordic/nrf52840_uf2_boot_mode.dtsi>
+
+/ {
+	model = "Adafruit Feather nRF52840 Express ZMK";
+	compatible = "adafruit,feather-nrf52840-zmk";
+
+	leds {
+		led0: led_0 {
+			gpios = <&gpio1 15 0>;
+		};
+	};
+};

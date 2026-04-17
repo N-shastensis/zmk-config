@@ -1,0 +1,16 @@
+# Adafruit Feather nRF52840 Express board configuration
+
+# Copyright (c) 2020 Tobias Svehagen
+# Copyright (c) 2024 Jacob Winther
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_ADAFRUIT_FEATHER_NRF52840_NRF52840_ZMK
+
+source "boards/common/usb/Kconfig.cdc_acm_serial.defconfig"
+
+choice ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE
+    default ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE_ADAFRUIT_NRF52
+
+endchoice
+
+endif # BOARD_ADAFRUIT_FEATHER_NRF52840_NRF52840_ZMK

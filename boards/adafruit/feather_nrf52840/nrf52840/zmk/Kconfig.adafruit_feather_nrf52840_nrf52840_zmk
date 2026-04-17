@@ -1,0 +1,12 @@
+# Adafruit Feather nRF52840 Express board configuration
+
+# Copyright (c) 2020 Tobias Svehagen
+# Copyright (c) 2024 Jacob Winther
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_ADAFRUIT_FEATHER_NRF52840_NRF52840_ZMK
+	select SOC_NRF52840_QIAA
+    select ZMK_BOARD_COMPAT
+    imply RETAINED_MEM
+    imply RETENTION
+    imply RETENTION_BOOT_MODE
