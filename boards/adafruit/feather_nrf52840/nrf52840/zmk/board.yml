@@ -1,5 +1,8 @@
 board:
-  extend: adafruit_feather_nrf52840
-  variants:
-    - name: zmk
-      qualifier: nrf52840
+  name: adafruit_feather_nrf52840
+  full_name: Feather nRF52840 (Express, Sense)
+  vendor: adafruit
+  socs:
+    - name: nrf52840
+      variants:
+        - name: zmk

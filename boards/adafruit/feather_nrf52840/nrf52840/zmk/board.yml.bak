@@ -1,0 +1,5 @@
+board:
+  extend: adafruit_feather_nrf52840
+  variants:
+    - name: zmk
+      qualifier: nrf52840
