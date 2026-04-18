@@ -130,22 +130,32 @@
             bindings = <&mo 6>;
         };
         combo_and {
-            timeout-ms = <40>;
             key-positions = <17 16>;
-			layers = <0>;
+		    layers = <0>;
+			timeout-ms = <40>;
 			require-prior-idle-ms = <0>;
-            bindings = <&macro_tap &mma &kp N &kp D>;
+            bindings = <&macro_and>;
         };
         combo_the {
-            timeout-ms = <40>;
             key-positions = <12 13>;
 			layers = <0>;
+            timeout-ms = <40>;
 			require-prior-idle-ms = <0>;
-            bindings = <&macro_tap &mmt &kp H &kp E>;
+            bindings = <&macro_the>;
         };
     };
 	
 	macros {
+		macro_and: macro_and {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&macro_tap &mma &kp N &kp D>;
+		};
+		macro_the: macro_the {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&macro_tap &mmt &kp H &kp E>;
+		};
 		zerok: zerok {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
