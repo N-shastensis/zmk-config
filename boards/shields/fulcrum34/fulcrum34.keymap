@@ -1,0 +1,265 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/mouse.h>
+
+#define DEFAULT 0
+#define NUMBER 1
+#define NAVIGATION 2
+#define SYMBOL 3
+#define FUNCTION 4
+#define MOUSE 5
+#define SPECIAL 6
+
+/ {
+    behaviors {
+        hrml: balanced_homerow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            hold-trigger-key-positions = <5 6 7 8 9>, <15 16 17 18 19>, <25 26 27 28 29>, <30 31 32 33>, <34 35 36 37 38 39 40 41 42 43>;
+			hold-trigger-on-release;
+            flavor = "balanced";
+            bindings = <&kp &kp>;
+        };
+        hrmr: balanced_homerow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            hold-trigger-key-positions = <0 1 2 3 4>, <10 11 12 13 14>, <20 21 22 23 24>, <30 31 32 33>, <34 35 36 37 38 39 40 41 42 43>;
+			hold-trigger-on-release;
+            flavor = "balanced";
+            bindings = <&kp &kp>;
+        };
+        htm: holdtap_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            flavor = "balanced";
+            bindings = <&kp &kp>;
+        };
+		shtm: semex_holdtap_mod {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            flavor = "balanced";
+            bindings = <&semex &kp>;
+		};
+		chtm: codot_holdtap_mod {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            flavor = "balanced";
+            bindings = <&codot &kp>;
+		};
+		semex: semex {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI &kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+		codot: codot {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COLON &kp QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        zhtm: zero_holdtap_mod {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            flavor = "balanced";
+            bindings = <&zerok &kp>;
+		};
+		caps: holdtap_capsword {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			tapping-term-ms = <120>;
+			quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+			flavor = "balanced";
+			bindings = <&kp &caps_word>;
+		};
+		caps_word: caps_word {
+			compatible = "zmk,behavior-caps-word";
+			#binding-cells = <0>;
+			continue-list = <UNDERSCORE MINUS>;
+		};
+		mma: mod_morph_a {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp LS(A)>;
+            mods = <(MOD_LSFT)>;
+        };
+		mmt: mod_morph_t {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp T &kp RS(T)>;
+            mods = <(MOD_RSFT)>;
+        };
+    };
+	
+    combos {
+        compatible = "zmk,combos";
+		combo_symbol_layer {
+            key-positions = <34 43>;
+            bindings = <&mo 3>;
+        };
+		combo_special_layer {
+            key-positions = <37 40>;
+            bindings = <&mo 6>;
+        };
+        combo_and {
+            timeout-ms = <40>;
+            key-positions = <17 16>;
+			layers = <0>;
+			require-prior-idle-ms = <0>;
+            bindings = <&macro_tap &mma &kp N &kp D>;
+        };
+        combo_the {
+            timeout-ms = <40>;
+            key-positions = <12 13>;
+			layers = <0>;
+			require-prior-idle-ms = <0>;
+            bindings = <&macro_tap &mmt &kp H &kp E>;
+        };
+    };
+	
+	macros {
+		zerok: zerok {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp N0 &kp N0 &kp N0>;
+        };
+	};
+	
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+// -----------------------------------------------------------------------------------------
+// |   V  |   G  |   H  |   P  | htLB ||     || htRF | QUOT |   Q  |   F  |   J  |
+// |htLG R|htLA S|htLS N|htLC T|   M  ||     || MINS |htRC A|htRS E|htRA C|htRG I|
+// |   K  |   B  |   L  |   D  |   X  ||     ||   Z  |   U  |   O  |   W  |   Y  |
+//                      |htSEC |htCQD ||     ||  RET | htTS |
+// |  L2  | BSPC |  CW  |  L5  |  DEL ||     || BSPC |  L4  |  ESC |  DEL |  L1  |
+                        bindings = <
+   &kp V &kp G &kp H &kp P &htm BSLH KP_LPAR   &htm FSLH KP_RPAR &kp SQT &kp Q &kp F &kp J    
+   &hrml LGUI R &hrml LALT S &hrml LSHFT N &hrml LCTRL T &kp M   &kp MINUS &hrmr RCTRL A &hrmr RSHFT E &hrmr RALT C &hrmr RGUI I 
+   &kp K &kp B &kp L &kp D &kp X   &kp Z &kp U &kp O &kp W &kp Y 
+                     &shtm 0 KP_COMMA &chtm 0 KP_DOT  &kp RET &htm TAB SPACE
+   &mo 2 &kp BSPC &caps CAPS 0 &mo 5 &kp DEL    &kp BSPC &mo 4 &kp ESC &kp DEL &mo 1 
+                        >;
+                };
+                number_layer {
+// -----------------------------------------------------------------------------------------
+// |   ~  |   @  |   <  |   {  |   [  ||     ||      |   7  |   8  |   9  | htTS |
+// |   ^  |   +  |   *  |   &  |   =  ||     ||      |   4  |   5  |   6  | ZhtM |
+// |   `  |   %  |   $  |   |  |   #  ||     || htDC |   1  |   2  |   3  |  RET |
+//                      |      |      ||     ||      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+                        bindings = <
+   &kp TILDE &kp AT &kp LT &kp LBRC &kp LBKT   &trans &kp N7 &kp N8 &kp N9 &htm TAB SPACE
+   &kp CARET &kp PLUS &kp STAR &kp AMPS &kp EQUAL   &trans &kp N4 &kp N5 &kp N6 &zhtm 0 N0
+   &kp GRAVE &kp PRCNT &kp DLLR &kp PIPE &kp HASH   &htm KP_DOT KP_COMMA &kp N1 &kp N2 &kp N3 &kp RET
+                     &trans &trans   &trans &trans
+   &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
+                        >;
+                };
+                navigation_layer {
+// -----------------------------------------------------------------------------------------
+// | INS  | PGUP |  UP  | PGDN |      ||     ||   ]  |   }  |   >  |   @  |   ~  |
+// | SLCK |  LT  |  DN  |  RT  |  APP ||     ||   =  |   &  |   *  |   +  |   ^  |
+// | PSCR | HOME |  PS  | END  | NLCK ||     ||   #  |   |  |   $  |   %  |   `  |
+//                      |      |      ||     ||      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+                        bindings = <
+   &kp INS &kp PG_UP &kp UP &kp PG_DN &trans   &kp RBKT &kp RBRC &kp GT &kp AT &kp TILDE
+   &kp SLCK &kp LEFT &kp DOWN &kp RIGHT &kp K_APP   &kp EQUAL &kp AMPS &kp STAR &kp PLUS &kp CARET
+   &kp PSCRN &kp HOME &kp PAUSE_BREAK &kp END &kp KP_NUM    &kp HASH &kp PIPE &kp DLLR &kp PRCNT &kp GRAVE
+                     &trans &trans   &trans &trans
+   &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
+                        >;
+                };
+                symbol_layer {
+// -----------------------------------------------------------------------------------------
+// |   ~  |   @  |   <  |   {  |   [  ||     ||   ]  |   }  |   >  |   @  |   ~  |
+// |   ^  |   +  |   *  |   &  |   =  ||     ||   =  |   &  |   *  |   +  |   ^  |
+// |   `  |   %  |   $  |   |  |   #  ||     ||   #  |   |  |   $  |   %  |   `  |
+//                      |      |      ||     ||      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+                        bindings = <
+   &kp TILDE &kp AT &kp LT &kp LBRC &kp LBKT   &kp RBKT &kp RBRC &kp GT &kp AT &kp TILDE
+   &kp CARET &kp PLUS &kp STAR &kp AMPS &kp EQUAL   &kp EQUAL &kp AMPS &kp STAR &kp PLUS &kp CARET
+   &kp GRAVE &kp PRCNT &kp DLLR &kp PIPE &kp HASH   &kp HASH &kp PIPE &kp DLLR &kp PRCNT &kp GRAVE
+                     &trans &trans   &trans &trans
+   &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
+                        >;
+                };
+                function_layer {
+// -----------------------------------------------------------------------------------------
+// |      |      |      |      |      ||     ||      |  F7  |  F8  |  F9  |  F12 |
+// |      |      |      |      |      ||     ||      |  F4  |  F5  |  F6  |  F11 |
+// |      |      |      |      |      ||     ||      |  F1  |  F2  |  F3  |  F10 |
+//                      |      |      ||     ||      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+                        bindings = <
+   &none &none &none &none &none   &none &kp F7 &kp F8 &kp F9 &kp F12
+   &none &none &none &none &none   &none &kp F4 &kp F5 &kp F6 &kp F11
+   &none &none &none &none &none   &none &kp F1 &kp F2 &kp F3 &kp F10
+                     &trans &trans   &trans &trans
+   &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
+                        >;
+                };
+                mouse_layer {
+// -----------------------------------------------------------------------------------------
+// |      |      |      |      |      ||     ||      |  MB4 |      |  MB5 |      |
+// |      |      |      |      |      ||     ||      | LCLK | MCLK | RCLK |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+//                      |      |      ||     ||      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+                        bindings = <
+   &none &none &none &none &none   &none &mkp MB4 &none &mkp MB5 &none
+   &none &none &none &none &none   &none &mkp LCLK &mkp MCLK &mkp RCLK &none
+   &none &none &none &none &none   &none &none &none &none &none
+                     &trans &trans   &trans &trans
+   &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
+                        >;
+                };
+                special_layer {
+// -----------------------------------------------------------------------------------------
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+//                      |      |      ||     ||      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+                        bindings = <
+   &none &none &none &none &none   &none &none &none &none &none
+   &none &none &none &none &none   &none &none &none &none &none
+   &none &none &none &none &none   &none &none &none &none &none
+                     &trans &trans   &trans &trans
+   &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans 
+                        >;
+                };
+        };
+};

@@ -1,0 +1,52 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if SHIELD_FULCRUM34_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Fulcrum34"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+	
+config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING
+	default y
+	
+config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_PROXY
+	default y
+
+endif # SHIELD_FULCRUM34_RIGHT
+
+if SHIELD_FULCRUM34_LEFT || SHIELD_FULCRUM34_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+config BUILD_OUTPUT_UF2
+	default y
+
+config MPU_ALLOW_FLASH_WRITE
+	default y
+
+config NVS
+	default y
+
+config FLASH
+	default y
+
+config FLASH_PAGE_LAYOUT
+	default y
+
+config FLASH_MAP
+	default y
+
+config ZMK_BLE
+	default y
+
+config ZMK_BLE_EXPERIMENTAL_FEATURES	
+	default y
+
+config ZMK_MOUSE
+	default y
+
+endif # SHIELD_FULCRUM34_LEFT || SHIELD_FULCRUM34_RIGHT

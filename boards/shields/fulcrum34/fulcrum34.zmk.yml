@@ -1,0 +1,13 @@
+file_format: "1"
+id: fulcrum34
+name: Fulcrum 34-Key
+type: shield
+url: https://github.com/dschil138/Fulcrum
+requires: [feather]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+siblings:
+  - fulcrum34_left
+  - fulcrum34_right
