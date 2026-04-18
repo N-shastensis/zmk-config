@@ -22,6 +22,9 @@ if SHIELD_FULCRUM34_LEFT || SHIELD_FULCRUM34_RIGHT
 config ZMK_SPLIT
     default y
 
+#config ZMK_BOARD_COMPAT
+#   default y
+
 #config BUILD_OUTPUT_UF2
 #	default y
 
