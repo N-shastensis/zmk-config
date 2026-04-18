@@ -40,6 +40,9 @@ config FLASH_PAGE_LAYOUT
 config FLASH_MAP
 	default y
 
+config ZMK_USB
+	default y
+
 config ZMK_BLE
 	default y
 
