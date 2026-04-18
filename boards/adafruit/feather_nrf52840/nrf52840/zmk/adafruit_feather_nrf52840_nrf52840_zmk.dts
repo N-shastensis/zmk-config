@@ -40,7 +40,7 @@
 
 / {
 	model = "Adafruit Feather nRF52840 Express ZMK";
-	compatible = "adafruit,feather-nrf52840-zmk";
+	compatible = "adafruit,feather-nrf52840";
 
 	leds {
 		led0: led_0 {
