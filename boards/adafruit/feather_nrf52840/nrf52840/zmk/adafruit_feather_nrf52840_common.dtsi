@@ -14,6 +14,9 @@
 
 	chosen {
 		zephyr,ieee802154 = &ieee802154;
+		zephyr,flash = &flash0;
+		zephyr,sram = &sram0;
+		zephyr,code-partition = &code_partition;
 	};
 
 	leds {
