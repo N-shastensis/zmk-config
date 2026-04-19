@@ -21,7 +21,7 @@
 
         /* Application code */
         code_partition: partition@26000 {
-		    reg = <0x26000 0xc6000>;
+		    reg = <0x26000 0xec000>;
         };
 		
 		/*
