@@ -7,7 +7,7 @@
 /dts-v1/;
 #include "adafruit_feather_nrf52840_common.dtsi"
 #include <nordic/nrf52840_partition_uf2_sdv6.dtsi>
-#include <../boards/common/usb/cdc_acm_serial.dtsi>
+//#include <../boards/common/usb/cdc_acm_serial.dtsi>
 #include <common/nordic/nrf52840_uf2_boot_mode.dtsi>
 
 / {
