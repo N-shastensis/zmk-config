@@ -181,10 +181,10 @@
 //                      |htSEC |htCQD ||     ||  RET | htTS |
 // |  L2  | BSPC |  L4  |  CW  |  DEL ||     || BSPC |  ESC | MTL5 |  DEL |  L1  |
                         bindings = <
-   &kp V &kp G &kp H &kp P &htm BSLH KP_LPAR   &htm FSLH KP_RPAR &kp SQT &kp Q &kp F &kp J    
+   &kp V &kp G &kp H &kp P &htm BSLH LPAR   &htm FSLH RPAR &kp SQT &kp Q &kp F &kp J    
    &hrml LGUI R &hrml LALT S &hrml LSHFT N &hrml LCTRL T &kp M   &kp MINUS &hrmr RCTRL A &hrmr RSHFT E &hrmr RALT C &hrmr RGUI I 
    &kp K &kp B &kp L &kp D &kp X   &kp Z &kp U &kp O &kp W &kp Y 
-                     &shtm 0 KP_COMMA &chtm 0 KP_DOT  &kp RET &htm TAB SPACE
+                     &shtm 0 COMMA &chtm 0 DOT  &kp RET &htm TAB SPACE
    &mo 2 &kp BSPC &mo 4 &caps CAPS 0 &kp DEL    &kp BSPC &kp ESC &mo_tog 5 5 &kp DEL &mo 1 
                         >;
                 };
@@ -198,7 +198,7 @@
                         bindings = <
    &kp TILDE &kp AT &kp LT &kp LBRC &kp LBKT   &trans &kp N7 &kp N8 &kp N9 &htm TAB SPACE
    &kp CARET &kp PLUS &kp STAR &kp AMPS &kp EQUAL   &trans &kp N4 &kp N5 &kp N6 &zhtm 0 N0
-   &kp GRAVE &kp PRCNT &kp DLLR &kp PIPE &kp HASH   &htm KP_DOT KP_COMMA &kp N1 &kp N2 &kp N3 &kp RET
+   &kp GRAVE &kp PRCNT &kp DLLR &kp PIPE &kp HASH   &htm DOT COMMA &kp N1 &kp N2 &kp N3 &kp RET
                      &trans &trans   &trans &trans
    &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
                         >;
