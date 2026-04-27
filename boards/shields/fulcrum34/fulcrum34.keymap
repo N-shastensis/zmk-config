@@ -128,6 +128,14 @@
 	
     combos {
         compatible = "zmk,combos";
+		combo_bootloader_left {
+		    key-positions = <10 11 12 13 14 30 31>;
+			bindings = <&bootloader>;
+		};
+		combo_bootloader_right {
+		    key-positions = <15 16 17 18 19 32 33>;
+			bindings = <&bootloader>;
+		};
 		combo_symbol_layer {
             key-positions = <34 43>;
             bindings = <&mo 3>;
