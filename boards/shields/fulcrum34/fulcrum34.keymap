@@ -24,7 +24,7 @@
         hrml: balanced_homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <240>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <5 6 7 8 9>, <15 16 17 18 19>, <25 26 27 28 29>, <30 31 32 33>, <34 35 36 37 38 39 40 41 42 43>;
@@ -35,7 +35,7 @@
         hrmr: balanced_homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <240>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <0 1 2 3 4>, <10 11 12 13 14>, <20 21 22 23 24>, <30 31 32 33>, <34 35 36 37 38 39 40 41 42 43>;
@@ -46,7 +46,7 @@
         htm: holdtap_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <240>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             flavor = "balanced";
@@ -56,13 +56,13 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <240>;
             bindings = <&mo>, <&tog>;
         };
 		shtm: semex_holdtap_mod {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <240>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             flavor = "balanced";
@@ -71,7 +71,7 @@
 		chtm: codot_holdtap_mod {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <120>;
+            tapping-term-ms = <240>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             flavor = "balanced";
@@ -101,7 +101,7 @@
 		caps: holdtap_capsword {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
-			tapping-term-ms = <120>;
+			tapping-term-ms = <240>;
 			quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
 			flavor = "balanced";
@@ -128,14 +128,6 @@
 	
     combos {
         compatible = "zmk,combos";
-		combo_bootloader_left {
-		    key-positions = <10 11 12 13 14 30 31>;
-			bindings = <&bootloader>;
-		};
-		combo_bootloader_right {
-		    key-positions = <15 16 17 18 19 32 33>;
-			bindings = <&bootloader>;
-		};
 		combo_symbol_layer {
             key-positions = <34 43>;
             bindings = <&mo 3>;
