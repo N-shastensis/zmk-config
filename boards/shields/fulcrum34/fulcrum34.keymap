@@ -120,7 +120,7 @@
                         bindings = <
    &kp F &kp P &mt LPAR D &mt BSLH L &kp X   &mt EXCL QMARK &mt FSLH U &mt RPAR O &kp Y &kp B    
    &hml LGUI S &hml LALT N &hml LSHFT T &hml LCTRL H &kp K   &mt SEMI COMMA &hmr RCTRL A &hmr RSHFT E &hmr RALT I &hmr RGUI C 
-   &kp V &kp W &kp G &kp M &kp J   &mt COLON DOT &kp QUOT &kp MINS &kp Q &kp Z
+   &kp V &kp W &kp G &kp M &kp J   &mt COLON DOT &kp QUOT &kp MINUS &kp Q &kp Z
                      &kp R &kp TAB  &kp RET &kp SPACE
    &mo 1 &kp BSPC &btl &kp ESC &kp DEL    &kp BSPC &caps CAPS 0 &btr &kp DEL &mo 2
                         >;
