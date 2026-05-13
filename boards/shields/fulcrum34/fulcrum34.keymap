@@ -21,109 +21,70 @@
 
 / {
     behaviors {
-        hrml: balanced_homerow_mods_left {
+        mt: mod_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <240>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+			require-prior-idle-ms = <20>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+        hml: balanced_homerow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <5 6 7 8 9>, <15 16 17 18 19>, <25 26 27 28 29>, <30 31 32 33>, <34 35 36 37 38 39 40 41 42 43>;
 			hold-trigger-on-release;
             flavor = "balanced";
-            bindings = <&kp &kp>;
+            bindings = <&kp>, <&kp>;
         };
-        hrmr: balanced_homerow_mods_right {
+        hmr: balanced_homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <240>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <0 1 2 3 4>, <10 11 12 13 14>, <20 21 22 23 24>, <30 31 32 33>, <34 35 36 37 38 39 40 41 42 43>;
 			hold-trigger-on-release;
             flavor = "balanced";
-            bindings = <&kp &kp>;
-        };
-        htm: holdtap_mods {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            quick-tap-ms = <0>;
-			require-prior-idle-ms = <20>;
-            flavor = "balanced";
-            bindings = <&kp &kp>;
+            bindings = <&kp>, <&kp>;
         };
 		mo_tog: behavior_mo_tog {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <240>;
+            tapping-term-ms = <200>;
             bindings = <&mo>, <&tog>;
         };
-		shtm: semex_holdtap_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            quick-tap-ms = <0>;
-			require-prior-idle-ms = <20>;
-            flavor = "balanced";
-            bindings = <&semex &kp>;
-		};
-		chtm: codot_holdtap_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            quick-tap-ms = <0>;
-			require-prior-idle-ms = <20>;
-            flavor = "balanced";
-            bindings = <&codot &kp>;
-		};
-		semex: semex {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SEMI &kp EXCL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-		codot: codot {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp COLON &kp QMARK>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        zhtm: zero_holdtap_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            quick-tap-ms = <0>;
-			require-prior-idle-ms = <20>;
-            flavor = "balanced";
-            bindings = <&zerok &kp>;
-		};
 		caps: holdtap_capsword {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
-			tapping-term-ms = <240>;
+			tapping-term-ms = <200>;
 			quick-tap-ms = <0>;
 			require-prior-idle-ms = <20>;
 			flavor = "balanced";
-			bindings = <&kp &caps_word>;
+			bindings = <&kp>, <&caps_word>;
 		};
 		caps_word: caps_word {
 			compatible = "zmk,behavior-caps-word";
 			#binding-cells = <0>;
 			continue-list = <UNDERSCORE MINUS>;
 		};
-		mma: mod_morph_a {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp A &kp LS(A)>;
-            mods = <(MOD_LSFT)>;
-        };
-		mmt: mod_morph_t {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp T &kp RS(T)>;
-            mods = <(MOD_RSFT)>;
-        };
+        btl: bootloader_left_mod  {
+		    compatible = "zmk,behavior-mod-morph";
+			#binding-cells = <0>;
+			bindings = <&mo_tog 5 5>, <&bootloader>;
+			mods = <MOD_LGUI>;
+			};
+        btr: bootloader_right_mod  {
+		    compatible = "zmk,behavior-mod-morph";
+			#binding-cells = <0>;
+			bindings = <&mo 4>, <&bootloader>;
+			mods = <MOD_RGUI>;
+			};
     };
 	
     combos {
@@ -136,70 +97,46 @@
             key-positions = <37 40>;
             bindings = <&mo 6>;
         };
-        combo_and {
-            key-positions = <17 16>;
-		    layers = <0>;
-			timeout-ms = <40>;
-			require-prior-idle-ms = <0>;
-            bindings = <&macro_and>;
-        };
-        combo_the {
-            key-positions = <12 13>;
-			layers = <0>;
-            timeout-ms = <40>;
-			require-prior-idle-ms = <0>;
-            bindings = <&macro_the>;
-        };
     };
 	
 	macros {
-		macro_and: macro_and {
-			compatible = "zmk,behavior-macro";
-			#binding-cells = <0>;
-			bindings = <&macro_tap &mma &kp N &kp D>;
-		};
-		macro_the: macro_the {
-			compatible = "zmk,behavior-macro";
-			#binding-cells = <0>;
-			bindings = <&macro_tap &mmt &kp H &kp E>;
-		};
-		zerok: zerok {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp N0 &kp N0 &kp N0>;
-        };
+		spacet: space_tab {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          bindings = <&macro_tap &kp SPACE &kp SPACE &kp SPACE &kp SPACE>;
+      };
 	};
 	
         keymap {
                 compatible = "zmk,keymap";
-
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |   V  |   G  |   H  |   P  | htLB ||     || htRF | QUOT |   Q  |   F  |   J  |
-// |htLG R|htLA S|htLS N|htLC T|   M  ||     || MINS |htRC A|htRS E|htRA C|htRG I|
-// |   K  |   B  |   L  |   D  |   X  ||     ||   Z  |   U  |   O  |   W  |   Y  |
-//                      |htSEC |htCQD ||     ||  RET | htTS |
-// |  L2  | BSPC |  L4  |  CW  |  DEL ||     || BSPC |  ESC | MTL5 |  DEL |  L1  |
+// |   F  |   P  |   D( |   L\ |   X  ||     ||   ?! |   U/ |   O) |   Y  |   B  |
+// |htLG S|htLA N|htLS T|htLC H|   K  ||     ||   ,; |htRC A|htRS E|htRA I|htRG C|
+// |   V  |   W  |   G  |   M  |   J  ||     ||   .: |   '" |   -_ |   Q  |   Z  |
+//                      |   R  |  tab ||     ||  ret |  spc |
+// |  L1  | BSPC |  blL |  ESC |  DEL ||     || BSPC |  CW  |  blR |  DEL |  L2  |
+// (  DW  |  BK  |  IN  |  UP  |  FW  )       (  BK  |  UP  |  IN  |  FW  |  DW  )
                         bindings = <
-   &kp V &kp G &kp H &kp P &htm BSLH LPAR   &htm FSLH RPAR &kp SQT &kp Q &kp F &kp J    
-   &hrml LGUI R &hrml LALT S &hrml LSHFT N &hrml LCTRL T &kp M   &kp MINUS &hrmr RCTRL A &hrmr RSHFT E &hrmr RALT C &hrmr RGUI I 
-   &kp K &kp B &kp L &kp D &kp X   &kp Z &kp U &kp O &kp W &kp Y 
-                     &shtm 0 COMMA &chtm 0 DOT  &kp RET &htm TAB SPACE
-   &mo 2 &kp BSPC &mo 4 &caps CAPS 0 &kp DEL    &kp BSPC &kp ESC &mo_tog 5 5 &kp DEL &mo 1 
+   &kp F &kp P &mt LPAR D &mt BSLH L &kp X   &mt EXCL QMARK &mt FSLH U &mt RPAR O &kp Y &kp B    
+   &hml LGUI S &hml LALT N &hml LSHFT T &hml LCTRL H &kp K   &mt SEMI COMMA &hmr RCTRL A &hmr RSHFT E &hmr RALT I &hmr RGUI C 
+   &kp V &kp W &kp G &kp M &kp J   &mt COLON DOT &kp QUOT &kp MINS &kp Q &kp Z
+                     &kp R &kp TAB  &kp RET &kp SPACE
+   &mo 1 &kp BSPC &btl &kp ESC &kp DEL    &kp BSPC &caps CAPS 0 &btr &kp DEL &mo 2
                         >;
                 };
                 number_layer {
 // -----------------------------------------------------------------------------------------
-// |   ~  |   @  |   <  |   {  |   [  ||     ||      |   7  |   8  |   9  | htTS |
-// |   ^  |   +  |   *  |   &  |   =  ||     ||      |   4  |   5  |   6  | ZhtM |
-// |   `  |   %  |   $  |   |  |   #  ||     || htDC |   1  |   2  |   3  |  RET |
-//                      |      |      ||     ||      |      |
+// |   ~  |   @  |   <  |   {  |   [  ||     ||      |   7  |   8  |   9  |      |
+// |   ^  |   +  |   *  |   &  |   =  ||     ||      |   4  |   5  |   6  |      |
+// |   `  |   %  |   $  |   |  |   #  ||     ||      |   1  |   2  |   3  |      |
+//                      |      |      ||     ||      |   0  |
 // |      |      |      |      |      ||     ||      |      |      |      |      |
                         bindings = <
-   &kp TILDE &kp AT &kp LT &kp LBRC &kp LBKT   &trans &kp N7 &kp N8 &kp N9 &htm TAB SPACE
-   &kp CARET &kp PLUS &kp STAR &kp AMPS &kp EQUAL   &trans &kp N4 &kp N5 &kp N6 &zhtm 0 N0
-   &kp GRAVE &kp PRCNT &kp DLLR &kp PIPE &kp HASH   &htm DOT COMMA &kp N1 &kp N2 &kp N3 &kp RET
-                     &trans &trans   &trans &trans
+   &kp TILDE &kp AT &kp LT &kp LBRC &kp LBKT   &trans &kp N7 &kp N8 &kp N9 &htrans
+   &kp CARET &kp PLUS &kp STAR &kp AMPS &kp EQUAL   &trans &kp N4 &kp N5 &kp N6 &trans
+   &kp GRAVE &kp PRCNT &kp DLLR &kp PIPE &kp HASH   &trans &kp N1 &kp N2 &kp N3 &trans
+                     &trans &trans   &trans &kp N0
    &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
                         >;
                 };
