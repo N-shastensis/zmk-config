@@ -117,6 +117,18 @@
             key-positions = <37 40>;
             bindings = <&caps>;
         };
+		combo_lfwrfw_app {
+            key-positions = <38 42>;
+            bindings = <&kp KP_APP>;
+        };
+		combo_lbkrbk_ {
+            key-positions = <35 39>;
+            bindings = <&kp>;
+        };
+		combo_linrin_ {
+            key-positions = <36 41>;
+            bindings = <&kp>;
+        };
     };
 	
 	macros {
@@ -147,16 +159,16 @@
                 };
               num_layer {
 // -------------------------------------------------------------------------------
-// |      |      |   8  |      |      ||     ||      |      |   9  |      |      |
-// |      |   4  |   0  |   2  |      |||||||||      |   3  |   1  |   5  |      |
-// |      |      |   6  |      |      ||     ||      |      |   7  |      |      |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
+// |   6  |   4  |   0  |   2  |   8  |||||||||   9  |   3  |   1  |   5  |   7  |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
 // _____________________|      |      ||     ||      |      |_____________________
 // |      |      |      |      |      ||     ||      |      |      |      |      |
 // (  DW  |  BK  |  IN  |  UP  |  FW  )       (  BK  |  UP  |  IN  |  FW  |  DW  )
                       bindings = <
- &trans &trans &kp N8 &trans &trans   &trans &trans &kp N9 &trans &trans
- &trans &kp N4 &kp N0 &kp N2 &trans   &trans &kp N3 &kp N1 &kp N5 &trans
- &trans &trans &kp N6 &trans &trans   &trans &trans &kp N7 &trans &trans
+ &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans
+ &kp N6 &kp N4 &kp N0 &kp N2 &kp N8   &kp N9 &kp N3 &kp N1 &kp N5 &kp N7
+ &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans
                    &trans &trans   &trans &trans
  &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
                       >;
@@ -195,32 +207,32 @@
 //              };
                 fnc_layer {
 // -------------------------------------------------------------------------------
-// |      |      |  F8  |      |      ||     ||      |      |  F9  |      |      |
-// |      |  F4  |  F10 |  F2  |  F12 |||||||||  F11 |  F3  |  F1  |  F5  |      |
-// |      |      |  F6  |      |      ||     ||      |      |  F7  |      |      |
+// |      |      |  F10 |      |      ||     ||      |      |  F11 |      |      |
+// |  F6  |  F4  |  F12 |  F2  |  F8  |||||||||  F9  |  F3  |  F1  |  F5  |  F7  |
+// |      |      |      |      |      ||     ||      |      |      |      |      |
 // _____________________|      |      ||     ||      |      |_____________________
 // |      |      |      |      |      ||     ||      |      |      |      |      |
 // (  DW  |  BK  |  IN  |  UP  |  FW  )       (  BK  |  UP  |  IN  |  FW  |  DW  )
                         bindings = <
-   &none &none &kp F8 &none &none   &none &none &kp F9 &none &none
-   &none &kp F4 &kp F10 &kp F2 &kp F12   &kp F11 &kp F3 &kp F1 &kp F5 &none
-   &none &none &kp F6 &none &none   &none &none &kp F7 &none &none
+   &none &none &kp F10 &none &none   &none &none &kp F11 &none &none
+   &kp F6 &kp F4 &kp F12 &kp F2 &kp F8   &kp F9 &kp F3 &kp F1 &kp F5 &kp F7
+   &none &none &none &none &none   &none &none &none &none &none
                      &trans &trans   &trans &trans
    &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans
                         >;
                 };
                 mnav_layer {
 // -------------------------------------------------------------------------------
-// | INS  | HOME |  UP  | PGUP |      ||     ||      |  MB4 |  L5  |  MB5 |      |
-// | SLCK |  LT  |  DN  |  RT  |  APP |||||||||      | LCLK | MCLK | RCLK |      |
-// | PSCR |  END |  PS  | PGDN  | NMLK ||     ||      |      |      |      |      |
+// | PSBR | HOME |  UP  | PGUP |      ||     ||      |  MB4 |  L5  |  MB5 |      |
+// | PSCR |  LT  |  DN  |  RT  | NMLK |||||||||      | LCLK | MCLK | RCLK |      |
+// | SLCK |  END |  INS | PGDN | NMLK ||     ||      |      |      |      |      |
 // _____________________|      |      ||     ||      |      |_____________________
 // |      |      |      |      |      ||     || MMVR | MMVU |      | MMVL | MMVD |
 // (  DW  |  BK  |  IN  |  UP  |  FW  )       (  BK  |  UP  |  IN  |  FW  |  DW  )
                         bindings = <
-   &kp INS &kp HOME &kp UP &kp PG_UP &trans      &none &mkp MB4 &tog 5 &mkp MB5 &none
-   &kp SLCK &kp LEFT &kp DOWN &kp RIGHT &kp K_APP      &none &mkp LCLK &mkp MCLK &mkp RCLK &none
-   &kp PSCRN &kp END &kp PAUSE_BREAK &kp PG_DN &kp KP_NUM       &none &none &none &none &none
+   &kp PAUSE_BREAK &kp HOME &kp UP &kp PG_UP &none      &none &mkp MB4 &tog 5 &mkp MB5 &none
+   &kp PSCRN &kp LEFT &kp DOWN &kp RIGHT &kp KP_NUM      &none &mkp LCLK &mkp MCLK &mkp RCLK &none
+   &kp SLCK &kp END &kp INS &kp PG_DN &none       &none &none &none &none &none
                      &trans &trans   &trans &trans
    &trans &trans &trans &trans &trans    &mmv MOVE_RIGHT &mmv MOVE_UP &trans &mmv MOVE_LEFT &mmv MOVE_DOWN
                         >;
